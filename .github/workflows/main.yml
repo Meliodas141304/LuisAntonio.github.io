@@ -1,0 +1,32 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # O la rama en la que trabajas
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js (si usas Node.js para generar tu sitio)
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'  # O la versión de Node.js que uses
+
+    - name: Install dependencies (si es necesario)
+      run: npm install  # o 'yarn install' si usas Yarn
+
+    - name: Build the site (dependiendo de tu proyecto)
+      run: npm run build  # o el comando para generar tu sitio
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages  # O la rama que usarás para GitHub Pages
+        folder: build  # O el directorio donde se genera tu sitio, ajusta según tu proyecto
+        token: ${{ secrets.GITHUB_TOKEN }}
