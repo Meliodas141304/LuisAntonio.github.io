@@ -13,10 +13,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Node.js (si usas Node.js para generar tu sitio)
+    - name: Set up Node.js (usando la versión 22.14.0)
       uses: actions/setup-node@v2
       with:
-        node-version: '16'  # O la versión de Node.js que uses
+        node-version: '22.14.0'
 
     - name: Install dependencies (si es necesario)
       run: npm install  # o 'yarn install' si usas Yarn
